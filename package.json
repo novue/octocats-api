@@ -1,0 +1,18 @@
+{
+  "name": "octocats-api",
+  "version": "0.0.1",
+  "description": "Octocats API",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node index.js"
+  },
+  "author": {
+    "name": "Tom Wang",
+    "email": "tom.wanghaiyi@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.15.3"
+  }
+}
