@@ -17,9 +17,10 @@ app.get('/api/octocats', function(req, res) {
   res.json({
     data: OCTOCATS.slice((page - 1) * size, page * size),
     pagination: {
-      page: page,
-      total: OCTOCATS.length,
       pageSize: size,
+      totalItems: OCTOCATS.length,
+      currentPage: page,
+      totalPages: Math.ceil(OCTOCATS.length / size),
       hasNextPage: page * size < OCTOCATS.length
     }
   });
