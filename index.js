@@ -18,10 +18,10 @@ app.get('/api/octocats', function(req, res) {
     data: OCTOCATS.slice((page - 1) * size, page * size),
     pagination: {
       pageSize: size,
+      currPage: page,
+      nextPage: page * size < OCTOCATS.length ? page + 1 : null,
       totalItems: OCTOCATS.length,
-      currentPage: page,
-      totalPages: Math.ceil(OCTOCATS.length / size),
-      hasNextPage: page * size < OCTOCATS.length
+      totalPages: Math.ceil(OCTOCATS.length / size)
     }
   });
 });
