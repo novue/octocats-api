@@ -9,12 +9,10 @@ const DEFAULT_PAGE = 1;
 const DEFAULT_PAGE_SIZE = 10;
 const OCTOCATS = JSON.parse(fs.readFileSync('./octocats.json').toString());
 
-app.use(cors());
-
-app.get('/api/octocats', function(req, res) {
+function cats(req, res) {
   let page = parseInt(req.query.page) || DEFAULT_PAGE;
   let size = parseInt(req.query.pageSize) || DEFAULT_PAGE_SIZE;
-  res.json({
+  return {
     data: OCTOCATS.slice((page - 1) * size, page * size),
     pagination: {
       pageSize: size,
@@ -23,7 +21,17 @@ app.get('/api/octocats', function(req, res) {
       totalItems: OCTOCATS.length,
       totalPages: Math.ceil(OCTOCATS.length / size)
     }
-  });
+  };
+}
+
+app.get('/jsonp/octocats', function(req, res) {
+  res.jsonp(cats(req, res));
+});
+
+app.use(cors());
+
+app.get('/api/octocats', function(req, res) {
+  res.json(cats(req, res));
 });
 
 app.get('*', function(req, res) {

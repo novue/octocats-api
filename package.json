@@ -13,6 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.4",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "g": "^2.0.1",
+    "hotel": "^0.7.6"
   }
 }
